@@ -1,0 +1,1 @@
+zvibecodowany symulator tia portal
