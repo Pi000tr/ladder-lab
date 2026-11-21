@@ -1,0 +1,32 @@
+{
+  "name": "ladder-lab",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.12.5",
+    "@tauri-apps/plugin-process": "^2.4.0",
+    "@tauri-apps/plugin-updater": "^2.14.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.12.6",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.1",
+    "@vitejs/plugin-react": "^4.7.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1",
+    "vite-plugin-singlefile": "^2.3.4",
+    "vitest": "^3.2.4"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}

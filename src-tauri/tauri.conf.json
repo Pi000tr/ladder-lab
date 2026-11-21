@@ -1,0 +1,50 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Ladder-Lab",
+  "version": "0.1.0",
+  "identifier": "pl.piotr.ladder-lab",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://127.0.0.1:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "LD Lab",
+        "width": 1150,
+        "height": 760,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "createUpdaterArtifacts": true,
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "android": {
+      "debugApplicationIdSuffix": ".debug"
+    }
+  },
+  "plugins": {
+    "updater": {
+      "requireSignedVersion": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU4MUQ1M0MyOTYzRDQ5MUMKUldRY1NUMld3bE1kNkxrL3E5bFJVSlFOODVmWWJwWEI2R2lvNlA5dWc3WEFpa1U1d0d1ODl4U1MK",
+      "endpoints": [
+        "https://github.com/Pi000tr/ladder-lab/releases/latest/download/latest.json"
+      ]
+    }
+  }
+}

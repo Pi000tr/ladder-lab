@@ -1,0 +1,60 @@
+name: Build & Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  publish-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: "--target universal-apple-darwin"
+          - platform: ubuntu-22.04
+            args: ""
+          - platform: windows-latest
+            args: ""
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Install Linux dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install frontend dependencies
+        run: npm install
+
+      - name: Build Tauri app
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5OUJJRHArQ09RTVFCZUlKZExteXZhQnR2N2luNG9iTWV2QVRZY2tsTHF6OEFBQkFBQUFBQUFBQUFBQUlBQUFBQUwyMUJVQXVBaE9BS1hwckJwVWJrdGQwL3lPRDd5ZFRORUtjaGZjN1BXeHFMN285TDg3U0dvcjdjVC9vbUpsQjhMVzlONkliV3p0QTR6U1ZWS2NHeDhoY3VoM0tENUpVak1HbmRuMDlTMUNhMy9iWHNNbnBRTEJib1JFOFc3ZlRQd1NOY0dQZUdaUWM9Cg== }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.Aezakmi2137 }}
+        with:
+          tagName: v__VERSION__
+          releaseName: "Ladder Lab v__VERSION__"
+          releaseBody: "Gotowe instalatory aplikacji na Windows (.exe), macOS (.dmg) oraz Linux (.AppImage / .deb)."
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}
