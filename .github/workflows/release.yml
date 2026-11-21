@@ -57,4 +57,4 @@ jobs:
           releaseBody: "Gotowe instalatory aplikacji na Windows (.exe), macOS (.dmg) oraz Linux (.AppImage / .deb)."
           releaseDraft: false
           prerelease: false
-          args: ${{ matrix.args }}
+          args: "${{ matrix.args }}"
