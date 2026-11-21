@@ -41,7 +41,7 @@
   "plugins": {
     "updater": {
       "requireSignedVersion": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU4MUQ1M0MyOTYzRDQ5MUMKUldRY1NUMld3bE1kNkxrL3E5bFJVSlFOODVmWWJwWEI2R2lvNlA5dWc3WEFpa1U1d0d1ODl4U1MK",
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDMxOEM4MzhCQTBEMTQ0OUQKUldTZFJOR2dpNE9NTVV2cHY5VXBGUUNiMjRIMFVwdDZMZDlNS2FiTndvYjVaWXlJQnZPVnVzOTQK",
       "endpoints": [
         "https://github.com/Pi000tr/ladder-lab/releases/latest/download/latest.json"
       ]
